@@ -95,6 +95,8 @@
   <input type="reset" value="Reset the form">
 </form>
 
+<button v-on:click="preview">Preview</button>
+
   </div>
 </template>
 
@@ -133,6 +135,10 @@ export default {
     			console.log(error)
     		})
 
+  	},
+
+  	preview(){
+  		window.alert(JSON.stringify(this.newCar));
   	}
   }
 
