@@ -12,6 +12,9 @@
       <li class="nav-item active">
         <router-link class = "nav-item nav-link" :to = "{name:'cars'}">Cars</router-link>
       </li>
+      <li class="nav-item active">
+        <router-link class = "nav-item nav-link" :to = "{name:'/add'}">Add</router-link>
+      </li>
      
       
       

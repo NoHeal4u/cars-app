@@ -2,10 +2,14 @@ import axios from 'axios'
 
 
 export default class Cars {
+
+	constructor () {
+		axios.defaults.baseURL = 'http://localhost:3000/api/'
+	}
 	
 	getAll() {
 
-		return axios.get('http://localhost:3000/api/cars')
+		return axios.get('cars')
 	}
 
 	get(id) {
@@ -13,7 +17,7 @@ export default class Cars {
 	}
 
 	add(car){
-		return axios.post(cars,car)
+		return axios.post('cars',car)
 	}
 
 	edit (id, car){
