@@ -3,10 +3,12 @@
     
   AddCar
 
+
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<form>
+<form @submit.prevent="addCar">
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Model</label> 
     <div class="col-8">
@@ -54,7 +56,7 @@
         <span class="custom-control-description">Automatic</span>
       </label>
       <label class="custom-control custom-checkbox">
-        <input  name="checkbox" class="custom-control-input" value="false" required="required" type="checkbox"> 
+        <input v-model="newCar.isAutomatic" name="checkbox" class="custom-control-input" value="false" required="required" type="checkbox"> 
         <span class="custom-control-indicator"></span> 
         <span class="custom-control-description">Manual</span>
       </label>
@@ -90,6 +92,7 @@
       <button name="submit" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
+  <input type="reset" value="Reset the form">
 </form>
 
   </div>
@@ -114,18 +117,28 @@ export default {
 
   	}
 
+
+
   }
 
 },
 
   methods : {
   	addCar(){
+  		cars.add(this.newCar)
+    		.then((response)=>{
+    			this.cars = response.data
+    			console.log(this.cars)
+    		}).catch((error)=>{
+    			console.log(error)
+    		})
 
   	}
   }
 
 
 }
+
 
 </script>
 
